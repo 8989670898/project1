@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-  
+#include<queue>  
 struct node
 {
     int key;
@@ -21,17 +21,32 @@ void inorder(struct node *root)
 {
     //prajjwal will add here
 }
-  
-
-struct node* insert(struct node* node, int key)
+//changes made by Nishkarsh Raj Khare
+void insert(struct Node* temp, int key)
 {
-    
-    if (node == NULL) return newNode(key);
- //Nishkarsh will add here   
+    queue<struct Node*> q;
+    q.push(temp);
  
-   
-    return node;
-}
+    // Do level order traversal until we find
+    // an empty place. 
+    while (!q.empty()) {
+        struct Node* temp = q.front();
+        q.pop();
+ 
+        if (!temp->left) {
+            temp->left = newNode(key);
+            break;
+        } else
+            q.push(temp->left);
+ 
+        if (!temp->right) {
+            temp->right = newNode(key);
+            break;
+        } else
+            q.push(temp->right);
+    }
+}  
+
 
 
 struct node* deleteNode(struct node* root, int key)
