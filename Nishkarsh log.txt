@@ -1,0 +1,162 @@
+
+500060720@upes-500060720 MINGW64 ~
+$ cd F:
+
+500060720@upes-500060720 MINGW64 /f
+$ git clone "https://github.com/8989670898/project1.git"
+fatal: destination path 'project1' already exists and is not an empty directory.
+
+500060720@upes-500060720 MINGW64 /f
+$ mkdir parth
+
+500060720@upes-500060720 MINGW64 /f
+$ cd parth
+
+500060720@upes-500060720 MINGW64 /f/parth
+$ git clone "https://github.com/8989670898/project1.git"
+Cloning into 'project1'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+
+500060720@upes-500060720 MINGW64 /f/parth
+$ git diff
+Not a git repository
+To compare two paths outside a working tree:
+usage: git diff [--no-index] <path> <path>
+
+500060720@upes-500060720 MINGW64 /f/parth
+$ git init
+Initialized empty Git repository in F:/parth/.git/
+
+500060720@upes-500060720 MINGW64 /f/parth (master)
+$ git diff
+
+500060720@upes-500060720 MINGW64 /f/parth (master)
+$ git add .
+warning: adding embedded git repository: project1
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> project1
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached project1
+hint:
+hint: See "git help submodule" for more information.
+
+500060720@upes-500060720 MINGW64 /f/parth (master)
+$ ls
+project1/
+
+500060720@upes-500060720 MINGW64 /f/parth (master)
+$ cd project1
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ ls
+binary.cpp
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ git diff
+diff --git a/binary.cpp b/binary.cpp
+index 8da17eb..2f573e8 100644
+--- a/binary.cpp
++++ b/binary.cpp
+@@ -1,6 +1,6 @@
+diff --git a/binary.cpp b/binary.cpp
+index 8da17eb..2f573e8 100644
+--- a/binary.cpp
++++ b/binary.cpp
+@@ -1,6 +1,6 @@
+diff --git a/binary.cpp b/binary.cpp
+index 8da17eb..2f573e8 100644
+--- a/binary.cpp
++++ b/binary.cpp
+@@ -1,6 +1,6 @@
+ #include<stdio.h>
+ #include<stdlib.h>
+-
++#include<queue>
+ struct node
+ {
+     int key;
+@@ -21,17 +21,32 @@ void inorder(struct node *root)
+ {
+     //prajjwal will add here
+ }
+-
+-
+-struct node* insert(struct node* node, int key)
++//changes made by Nishkarsh Raj Khare
++void insert(struct Node* temp, int key)
+ {
+-
+-    if (node == NULL) return newNode(key);
+- //Nishkarsh will add here
++    queue<struct Node*> q;
++    q.push(temp);
+
+-
+-    return node;
+-}
++    // Do level order traversal until we find
++    // an empty place.
++    while (!q.empty()) {
++        struct Node* temp = q.front();
++        q.pop();
++
++        if (!temp->left) {
++            temp->left = newNode(key);
++            break;
++        } else
++            q.push(temp->left);
++
++        if (!temp->right) {
++            temp->right = newNode(key);
++            break;
++        } else
++            q.push(temp->right);
++    }
+
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ git add .
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ git merge
+Already up to date.
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ git commit -m "Nishkarsh Raj Khare adds the code to Parth's file"<
+bash: syntax error near unexpected token `newline'
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ git commit -m "Nishkarsh Raj Khare adds the code to Parth's file"
+[master c3807ea] Nishkarsh Raj Khare adds the code to Parth's file
+ 1 file changed, 25 insertions(+), 10 deletions(-)
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$ git push -u origin master
+fatal: HttpRequestException encountered.
+   An error occurred while sending the request.
+Username for 'https://github.com': 500060720@stu.upes.ac.in
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 597 bytes | 597.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/8989670898/project1.git
+   b778022..c3807ea  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+500060720@upes-500060720 MINGW64 /f/parth/project1 (master)
+$
